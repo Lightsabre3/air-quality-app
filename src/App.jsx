@@ -58,7 +58,7 @@ const App = () => {
 
   return (
     <div className='app'>
-      <h1 className='w-12'>Weather App</h1>
+      <h1 className='w-12'>Air Quality in your Area</h1>
         <input  
           type="text" 
           onChange={(e) => setSearch(e.target.value)} 
