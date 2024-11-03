@@ -68,12 +68,12 @@ const App = () => {
 
       <MyLocation />
       {typeof weather.main != "undefined" ? <div>
-        <h2>City : { weather.name}</h2>
+        <h2>City: { weather.name}</h2>
         <p className='text-lg'>Weather :{ weather.main.temp}</p>
-        <p>Feels Like : {weather.main.feels_like}</p>
-        <p>Description : {weather.weather[0]["description"]}</p>
+        <p>Feels Like: {weather.main.feels_like}</p>
+        <p>Description: {weather.weather[0]["description"]}</p>
       </div>
-        : <p>Please enter correctly city name...</p>}
+        : <p>Please correctly enter city name </p>}
 
     </div>
   );
