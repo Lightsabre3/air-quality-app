@@ -19,7 +19,6 @@ function MyLocation() {
   const [position, setPosition] = useState({ latitude: null, longitude: null,heading: null });
 
   useEffect(() => {
-    console.log("Entered MyLocation")
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(function (position) {
         setPosition({
@@ -53,14 +52,10 @@ const App = () => {
   const [geo, setGeo] = useState({});
 
   const searchPressed = () => {
-    console.log("Search Pressed")
-    console.log(search)
     
     fetch(`${geo_api.url}?q=${search}&limit=5&APPID=${geo_api.key}`)
       .then((res) => res.json())
       .then((result) => {
-        console.log("after calling geo code API")
-        console.log(result)
         setGeo(result)
         })
       .catch((error) => {
@@ -70,11 +65,8 @@ const App = () => {
       fetch(`${api.url}?lat=${geo[0].lat}&lon=${geo[0].lon}&APPID=${api.key}`)
       .then((res) => res.json())
       .then((result) => {
-        console.log("after calling air quality API")
-        console.log(result)
         setAirQuality(result)
-        console.log(airquality.list[0].main.aqi)
-      })
+       })
       .catch((error) => {
         console.log(error)
       })  
@@ -93,7 +85,7 @@ const App = () => {
         <button onClick={searchPressed}>Search</button>
 
       <MyLocation />
-      {typeof airquality.list[0].main != "undefined" ? <div>
+      {typeof airquality.list != "undefined" ? <div>
         <h2 className='text-lg'>Air Quality Index : {airquality.list[0].main.aqi}</h2>
         <p>Concentration of Carbon Monoxide: {airquality.list[0].components.co} μg/m3</p>
         <p>Concentration of Nitrogen Monoxide: {airquality.list[0].components.no} μg/m3</p>
